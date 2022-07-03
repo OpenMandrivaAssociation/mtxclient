@@ -1,3 +1,6 @@
+%define libname %mklibname mtxclient
+%define devname %mklibname mtxclient -d
+
 Name: mtxclient
 Version: 0.7.0
 Release: 1
@@ -21,12 +24,21 @@ BuildRequires: ninja
  
 %description
 Client API library for the Matrix protocol, built on top of Boost.Asio.
+
+%package -n %{libname}
+Summary:	Library for MTXclient
+Group:		System/Libraries
+Provides: mtxclient
+
+%description -n %{libname}
+Client API library for the Matrix protocol, built on top of Boost.Asio.
  
-%package devel
+%package -n %{devname}
 Summary: Development files for %{name}
-Requires: %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
+Provides: mtxclient-devel
  
-%description devel
+%description -n	%{devname}
 %{summary}.
  
 %prep
@@ -56,12 +68,12 @@ Requires: %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 %ninja_install -C build
 ln -s libmatrix_client.so.%{version} %{buildroot}%{_libdir}/libmatrix_client.so.0
  
-%files
+%files -n %{libname}
 %doc README.md
 %license LICENSE
 %{_libdir}/*.so.0*
  
-%files devel
+%files -n %{devname}
 %{_includedir}/%{name}
 %{_includedir}/mtx
 %{_includedir}/mtx.hpp
