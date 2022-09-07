@@ -2,8 +2,8 @@
 %define devname %mklibname mtxclient -d
 
 Name: mtxclient
-Version: 0.8.0
-Release: 2
+Version: 0.8.1
+Release: 1
 Group:   System/Libraries
 License: MIT
 Summary: Client API library for Matrix, built on top of Boost.Asio
