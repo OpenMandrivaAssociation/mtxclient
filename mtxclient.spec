@@ -2,7 +2,7 @@
 %define devname %mklibname mtxclient -d
 
 Name: mtxclient
-Version: 0.8.1
+Version: 0.8.2
 Release: 1
 Group:   System/Libraries
 License: MIT
