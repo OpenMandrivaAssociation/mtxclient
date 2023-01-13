@@ -2,8 +2,8 @@
 %define devname %mklibname mtxclient -d
 
 Name: mtxclient
-Version: 0.8.2
-Release: 2
+Version: 0.9.1
+Release: 1
 Group:   System/Libraries
 License: MIT
 Summary: Client API library for Matrix, built on top of Boost.Asio
@@ -14,10 +14,11 @@ BuildRequires: cmake(mpark_variant)
 BuildRequires: cmake(nlohmann_json)
 BuildRequires: cmake(Olm)
 BuildRequires: cmake(spdlog)
-BuildRequires: pkgconfig(coeurl)
+BuildRequires: pkgconfig(coeurl) >= 0.3.0
 BuildRequires: pkgconfig(libcrypto)
 BuildRequires: pkgconfig(libevent)
 BuildRequires: pkgconfig(openssl)
+BuildRequires: pkgconfig(re2)
 BuildRequires: pkgconfig(zlib)
 BuildRequires: cmake
 BuildRequires: ninja
