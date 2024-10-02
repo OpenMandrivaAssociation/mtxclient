@@ -3,12 +3,13 @@
 
 Name: mtxclient
 Version: 0.10.0
-Release: 2
+Release: 3
 Group:   System/Libraries
 License: MIT
 Summary: Client API library for Matrix, built on top of Boost.Asio
 URL: https://github.com/Nheko-Reborn/mtxclient
 Source0: https://github.com/Nheko-Reborn/mtxclient/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:  fmt-v11.patch
  
 BuildRequires: cmake(mpark_variant)
 BuildRequires: cmake(nlohmann_json)
@@ -20,6 +21,7 @@ BuildRequires: pkgconfig(libevent)
 BuildRequires: pkgconfig(openssl)
 BuildRequires: pkgconfig(re2)
 BuildRequires: pkgconfig(zlib)
+BuildRequires: pkgconfig(fmt)
 BuildRequires: cmake
 BuildRequires: ninja
  
