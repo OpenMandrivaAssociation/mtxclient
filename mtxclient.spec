@@ -3,7 +3,7 @@
 
 Name: mtxclient
 Version: 0.10.0
-Release: 3
+Release: 4
 Group:   System/Libraries
 License: MIT
 Summary: Client API library for Matrix, built on top of Boost.Asio
