@@ -1,14 +1,30 @@
+# set to nil when packaging a release,
+# or the long commit tag for the specific git branch
+%define commit_tag f5766cb53c244a808b7e512c7b83b3942fb67834
+
+# when using a commit_tag (i.e. not nil) add a commit date
+# decoration ~0.yyyyMMdd to Version number
+%if "%{commit_tag}" != "%{nil}"
+%define commit_date 20260301
+%endif
+
 %define libname %mklibname mtxclient
 %define devname %mklibname mtxclient -d
 
 Name: mtxclient
-Version: 0.10.1
-Release: 2
+Version: 0.10.2%{?commit_date:~0.%{commit_date}}
+Release: 1
 Group:   System/Libraries
 License: MIT
 Summary: Client API library for Matrix, built on top of Boost.Asio
 URL: https://github.com/Nheko-Reborn/mtxclient
-Source0: https://github.com/Nheko-Reborn/mtxclient/archive/v%{version}/%{name}-%{version}.tar.gz
+
+# change the source URL depending on if the package is a release version or a git version
+%if "%{commit_tag}" != "%{nil}"
+Source0:       %url/archive/%{commit_tag}/%{name}-%{version}.tar.gz
+%else
+Source0:       %url/archive/%{version}/%{name}-%{version}.tar.gz
+%endif
 
 BuildSystem:   cmake
 BuildOption:   -DCMAKE_BUILD_TYPE=Release
